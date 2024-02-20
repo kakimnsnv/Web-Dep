@@ -38,7 +38,24 @@ input.addEventListener("keyup", e => {
 });
 addButton.addEventListener("click", () => {
     let todo = input.value.trim();
+    let is = false;
+    todo.map((item, i) => {
+        if(i % 2 == 0){
+            if(item == todo.charAt(0)){
+                is = true;
+                // alert("You are cheating!");
+            }else{
+                is = false;
+                
+            }
+
+        }
+    })
+    if(is){
+        alert("You are cheating!");
+    }
     if (!todo) {
+
         return
     }
     addTodo(todo);
@@ -56,7 +73,7 @@ function check(todo) {
     let todoName = todo.parentElement.lastElementChild;
     if (todo.checked) {
         todoName.classList.add("checked");
-        todosJson[todo.id].status = "completed";
+        todosJson[todo.id].status = "done";
     } else {
         todoName.classList.remove("checked");
         todosJson[todo.id].status = "pending";
